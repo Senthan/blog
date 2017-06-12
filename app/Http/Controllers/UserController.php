@@ -56,6 +56,23 @@ class UserController extends Controller
         return view('user.index', compact('breadcrumb', 'roles'));
     }
 
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        $this->authorize(new User());
+
+        $breadcrumb = [
+            ['text' => 'home', 'route' => 'home.index'],
+            ['text' => 'user management', 'route' => 'user.index'],
+            ['text' => 'create', 'class' => 'active']
+        ];
+        $roles = $this->roles->forDropDown();
+        return view('user.create', compact('breadcrumb', 'roles'));
+    }
+    
     /**
      * @param UserStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
