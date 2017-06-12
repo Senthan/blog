@@ -12,12 +12,6 @@
 */
 
 
-Route::get('login', 'UserController@showLoginForm')->name('login');
-Route::post('login', 'UserController@login');
-Route::post('logout', 'UserController@logout')->name('logout');
-
-Route::get('/', 'HomeController@index')->name('home.index');
-
 
 $router->group(['middleware' => ['auth']], function ($router) {
 
@@ -58,3 +52,7 @@ $router->group(['middleware' => ['auth']], function ($router) {
     $router->resource('blog', 'BlogController');
 
 });
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
