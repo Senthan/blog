@@ -40,7 +40,30 @@ class BlogController extends Controller
 
     public function store(BlogStoreRequest $request)
     {
-        Blog::create($request->only(['name', 'description', 'blog_category_id', 'latitude', 'longitude'])); 
+        
+        $pageItem = Blog::create($request->only(['name', 'description', 'blog_category_id'])); 
+
+
+        $file = $request->file('chooseFile');
+        $fileType = $file->getMimeType();
+        $destinationPath = base_path('public');
+        $path = $destinationPath.'/media/'.$pageItem->id;
+        $imageName = '';
+        if(str_contains($fileType, 'image')) {
+            $imageName = 'image'.(count($pageItem->getMedia())+1).'.'.$file->getClientOriginalExtension();
+            $fileType = 'image';
+        } elseif (str_contains($fileType, 'video')) {
+            $imageName = 'video'.(count($pageItem->getMedia())+1).'.'.$file->getClientOriginalExtension();
+            $fileType = 'video';
+        } elseif (str_contains($fileType, 'pdf') || str_contains($fileType, 'document')) {
+            $imageName = 'document'.(count($pageItem->getMedia())+1).'.'.$file->getClientOriginalExtension();
+            $fileType = 'document';
+        }
+        $file->move($path, $imageName);
+
+        $pageItem->addMedia($path.'/'.$imageName)->withCustomProperties(['type' => $fileType]) ->toCollectionOnDisk();
+
+
         return redirect()->route('blog.index');
     }
 
@@ -60,7 +83,7 @@ class BlogController extends Controller
     
     public function update(BlogUpdateRequest $request, Blog $blog)
     {
-        $blog->update($request->only(['name', 'description', 'blog_category_id', 'latitude', 'longitude']));    
+        $blog->update($request->only(['name', 'description', 'blog_category_id']));    
         return redirect()->route('blog.index');
     }
 

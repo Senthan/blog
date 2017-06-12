@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="content">
-        {!! Form::open(['url' => route('blog.store'), 'role' => 'form', 'class' => 'form-horizontal ui form']) !!}
+        {!! Form::open(['url' => route('blog.store'), 'role' => 'form', 'class' => 'form-horizontal ui form', 'files' => true]) !!}
             <div class="ui segments">
                 <div class="ui segment clearfix">
                     <h2 class="pull-left">Create blog</h2>

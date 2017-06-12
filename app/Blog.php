@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 /**
  * App\Blog
@@ -18,11 +20,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Blog whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Blog whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Blog whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Blog whereRestaurantCategoryId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Blog whereBlogCategoryId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Blog whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Blog extends Model
+class Blog extends Model implements HasMedia
 {
     protected $fillable = [
         'name', 'description', 'blog_category_id'

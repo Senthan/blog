@@ -20,8 +20,9 @@
 </div>
 <div class="field">
     <label>File</label>
-    {!! Form::file('file') !!}
-    <p class="help-block">{!! ($errors->has('file') ? $errors->first('file') : '') !!}</p>
+    {!! Form::file('chooseFile', null, ['id' => 'chooseFile', 'class' => 'form-control', 'placeholder' => '']) !!}
+    
+    <p class="help-block">{!! ($errors->has('chooseFile') ? $errors->first('chooseFile') : '') !!}</p>
 </div>
 
 @section('script')
