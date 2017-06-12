@@ -32,4 +32,10 @@ class HomeController extends Controller
         return view('demo');
     }
 
+
+    public function show(Blog $blog)
+    {
+        
+        return view('blog.show', compact('blog'));
+    }
 }

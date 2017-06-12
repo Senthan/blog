@@ -69,13 +69,6 @@ class BlogController extends Controller
         return redirect()->route('blog.index');
     }
 
-
-    public function show(Blog $blog)
-    {
-        
-        return view('blog.show', compact('blog'));
-    }
-
    
     public function edit(Blog $blog)
     {

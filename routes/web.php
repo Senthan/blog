@@ -48,8 +48,19 @@ $router->group(['middleware' => ['auth']], function ($router) {
     $router->get('role/{role}/policy/permission', ['as' => 'role.permission', 'uses' => 'RoleController@permission']);
     $router->get('role/{role}/policy/{policy}/permission', ['as' => 'role.get.permission', 'uses' => 'RoleController@getPolicyMethods']);
 
-    
-    $router->resource('blog', 'BlogController');
+
+
+    $router->get('blog', ['as' => 'blog.index', 'uses' => 'BlogController@index']);
+    $router->get('blog/create', ['as' => 'blog.create', 'uses' => 'BlogController@create']);
+    $router->post('blog', ['as' => 'blog.store', 'uses' => 'BlogController@store']);
+
+    $router->get('blog/{blog}/edit', ['as' => 'blog.edit', 'uses' => 'BlogController@edit']);
+    $router->patch('blog/{blog}', ['as' => 'blog.update', 'uses' => 'BlogController@update']);
+
+    $router->get('blog/{blog}/delete', ['as' => 'blog.delete', 'uses' => 'BlogController@delete']);
+    $router->delete('blog/{blog}', ['as' => 'blog.destroy', 'uses' => 'BlogController@destroy']);
+
+
     $router->get('blog/{blog}/delete', ['uses' => 'BlogController@delete', 'as' => 'blog.delete']);
 
     $router->post('blog/category', ['uses' => 'BlogCategoryController@store', 'as' => 'category.store']);
@@ -65,3 +76,6 @@ Route::get('/demo', 'HomeController@demo');
     $router->post('comments/add/{model}', ['uses' => 'CommentController@addComment', 'as' => 'comments.add']);
     $router->post('comments/remove', ['uses' => 'CommentController@removeComment', 'as' => 'comments.remove']);
     $router->get('comments/{model}', ['uses' => 'CommentController@view', 'as' => 'comments.get']);
+
+
+    $router->get('blog/{blog}', ['as' => 'blog.show', 'uses' => 'HomeController@show']);
