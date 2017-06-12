@@ -61,7 +61,7 @@ class BlogController extends Controller
         }
         $file->move($path, $imageName);
 
-        $pageItem->addMedia($path.'/'.$imageName)->withCustomProperties(['type' => $fileType]) ->toCollectionOnDisk();
+        $pageItem->addMedia($path.'/'.$imageName)->withCustomProperties(['type' => $fileType]);
 
 
         return redirect()->route('blog.index');

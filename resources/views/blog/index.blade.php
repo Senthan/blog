@@ -13,16 +13,14 @@
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Longitude</th>
-                            <th>Latitude</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody ng-cloak>
                         <tr ng-repeat="blog in blogs track by $index" ng-click="setSelected();" ng-class="{'bg-info lt': blog.id === selected.id}">
                             <td>@{{ blog.name }}</td>
                             <td>@{{ blog.category.name }}</td>
-                            <td>@{{ blog.longitude }}</td>
-                            <td>@{{ blog.latitude }}</td>
+                            <td>@{{ blog.description }}</td>
                         </tr>
                     </tbody>
                 </table>

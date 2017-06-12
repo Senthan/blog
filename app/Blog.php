@@ -32,7 +32,7 @@ class Blog extends Model implements HasMedia
     ];
 
     public function category() {
-        return $this->belongsTo(BlogCategory::class);
+        return $this->belongsTo(BlogCategory::class, 'blog_category_id');
     }
 
 }
