@@ -72,7 +72,7 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        $this->authorize($blog);
+        
         return view('blog.show', compact('blog'));
     }
 

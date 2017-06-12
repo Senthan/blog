@@ -8,15 +8,13 @@
                 <div class="ui segment blue">
                     <div class="ui relaxed list clearfix">
                         @foreach($blogs as $key => $blog)
-                          <div class="item">
-                          @foreach($blog->getMedia() as $media)
+                          <a href="{{ route('blog.show', ['blog' => $blog]) }}" class="item">
                             <img class="ui avatar image" src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
-                          @endforeach
                             <div class="content">
                               <a class="header">{!! $blog->name or '' !!}</a>
                               <div class="description">{!! $blog->description or '' !!}</div>
                             </div>
-                          </div>
+                          </a>
                           @endforeach
                     </div>
                 </div>
