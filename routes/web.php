@@ -49,8 +49,12 @@ $router->group(['middleware' => ['auth']], function ($router) {
     $router->get('role/{role}/policy/{policy}/permission', ['as' => 'role.get.permission', 'uses' => 'RoleController@getPolicyMethods']);
 
     
-
     $router->resource('blog', 'BlogController');
+    $router->get('blog/{blog}/delete', ['uses' => 'BlogController@delete', 'as' => 'blog.delete']);
+
+    $router->post('blog/category', ['uses' => 'BlogCategoryController@store', 'as' => 'category.store']);
+    $router->get('blog/category/create', ['uses' => 'BlogCategoryController@create', 'as' => 'category.create']);
+
 
 });
 

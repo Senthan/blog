@@ -18,8 +18,6 @@ class CreateBlogsTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->unsignedInteger('blog_category_id')->nullable()->index();
-            $table->foreign('blog_category_id')->references('id')->on('restaurant_categories')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
