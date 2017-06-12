@@ -27,3 +27,11 @@ if (!function_exists('breadcrumb')) {
         return view('components.partial.breadcrumb', compact('breadcrumb'))->render();
     }
 }
+
+
+if (! function_exists('carbon')) {
+    function carbon($time = null, $tz = null)
+    {
+        return new \Carbon\Carbon($time, $tz);
+    }
+}

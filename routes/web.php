@@ -61,3 +61,7 @@ $router->group(['middleware' => ['auth']], function ($router) {
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/demo', 'HomeController@demo');
+
+    $router->post('comments/add/{model}', ['uses' => 'CommentController@addComment', 'as' => 'comments.add']);
+    $router->post('comments/remove', ['uses' => 'CommentController@removeComment', 'as' => 'comments.remove']);
+    $router->get('comments/{model}', ['uses' => 'CommentController@view', 'as' => 'comments.get']);
