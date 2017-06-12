@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}"  data-ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,9 +39,22 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="{{ request()->is('blog') ? 'active' : '' }}"><a href="{{ route('blog.index') }}">Blog <span class="sr-only">(current)</span></a></li>
+        
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle {{ request()->is('setting') ? 'active' : '' }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li class="dropdown">
+                                @can('index', new \App\User())
+                                    <a href="{{ route('user.index') }}"> User Management</a>
+                                @endcan
+                                @can('index', new \App\Role())
+                                    <a href="{{ route('role.index') }}"> Role Management</a>
+                                @endcan
+                             </li>
+                          </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -86,7 +99,33 @@
     <script type="text/javascript" src="{{  asset('components/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{  asset('components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/components/semantic/dist/semantic.min.js') }}"></script>
-    <script src="{{ asset('/components/lightslider/dist/js/lightslider.min.js') }}"></script>
+    <script src="{{ asset('/components/lightslider/dist/js/lightslider.min.js') }}"></script> 
+    <script src="{{ asset('/components/angular/angular.js') }}"></script> 
+    <script src="/components/angular-ui-grid/ui-grid.min.js"></script>
+    <script src="/components/toastr/toastr.min.js"></script>
+
+
+    <script type="text/javascript">
+    var app = angular.module('app', ['ui.grid', 'ui.grid.selection', 'ui.grid.pagination']);
+    app.run(['$http', function ($http) {
+        $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+        $http.defaults.cache = false;
+    }]);
+
+    var gridOptions = {
+            enableSorting: true,
+            enableFiltering: true,
+            paginationPageSizes: [50, 100, 500, 1000],
+            paginationPageSize: 100,
+            enableRowSelection: true,
+            enableSelectAll: true,
+            selectionRowHeaderWidth: 35,
+            rowHeight: 35,
+            multiSelect:false,
+            columnDefs: [
+            ]
+        };
+    </script>
 
     @section('script')
 
