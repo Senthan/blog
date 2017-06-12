@@ -26,6 +26,7 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
  */
 class Blog extends Model implements HasMedia
 {
+	use HasMediaTrait;
     protected $fillable = [
         'name', 'description', 'blog_category_id'
     ];
