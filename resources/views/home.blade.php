@@ -7,15 +7,24 @@
             <div class="ui segments">
                 <div class="ui segment blue">
                     <div class="ui relaxed list clearfix">
-                        @foreach($blogs as $key => $blog)
-                          <a href="{{ route('blog.show', ['blog' => $blog]) }}" class="item">
-                            <img class="ui avatar image" src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
-                            <div class="content">
-                              <a class="header">{!! $blog->name or '' !!}</a>
-                              <div class="description">{!! $blog->description or '' !!}</div>
+                      <div class="ui link cards">
+                      @foreach($blogs as $key => $blog)
+                        <div class="card">
+                          <div class="image">
+                            <img src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
+                          </div>
+                          <div class="content">
+                            <div class="header">{!! $blog->user->name or '' !!}</div>
+                            <div class="meta">
+                              <a>{!! $blog->name or '' !!}</a>
                             </div>
-                          </a>
-                          @endforeach
+                            <div class="description">
+                              {!! $blog->description or '' !!}
+                            </div>
+                          </div>
+                        </div>
+                      @endforeach
+                      </div>
                     </div>
                 </div>
             </div>
