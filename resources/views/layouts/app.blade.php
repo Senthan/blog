@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css')  }}">
     <link href="{{ asset('/components/semantic/dist/semantic.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/components/lightslider/dist/css/lightslider.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('components/angular-ui-grid/ui-grid.min.css') }}">
+    <link rel="stylesheet" href="/components/toastr/toastr.min.css">
 
 </head>
 <body>
