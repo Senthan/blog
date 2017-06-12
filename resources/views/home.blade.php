@@ -9,7 +9,7 @@
                     <div class="ui relaxed list clearfix">
                       <div class="ui link cards">
                       @foreach($blogs as $key => $blog)
-                        <div class="card">
+                        <a href="{{ route('blog.show', ['blog' => $blog]) }}" class="card">
                           <div class="image">
                             <img src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
                           </div>
@@ -22,7 +22,7 @@
                               {!! $blog->description or '' !!}
                             </div>
                           </div>
-                        </div>
+                        </a>
                       @endforeach
                       </div>
                     </div>
