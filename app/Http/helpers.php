@@ -35,3 +35,10 @@ if (! function_exists('carbon')) {
         return new \Carbon\Carbon($time, $tz);
     }
 }
+
+
+if (!function_exists('gate')) {
+    function gate() {
+        return app('Illuminate\Contracts\Auth\Access\Gate');
+    }
+}

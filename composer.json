@@ -10,7 +10,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "league/fractal": "^0.16.0",
-        "spatie/laravel-medialibrary": "^5.12"
+        "spatie/laravel-medialibrary": "^5.12",
+        "uxweb/sweet-alert": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

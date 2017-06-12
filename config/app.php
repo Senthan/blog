@@ -179,7 +179,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
-
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -231,6 +231,7 @@ return [
                         // Html Collective
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 
