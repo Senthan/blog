@@ -1,4 +1,4 @@
-<ul class="breadcrumb">
+<ul class="breadcrumb clearfix">
     @foreach($breadcrumb as $item)
         <li class="{{ $item['class'] }}">
             @if(isset($item['route']))
