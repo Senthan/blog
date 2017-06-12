@@ -9,17 +9,19 @@
                     <div class="ui relaxed list clearfix">
                       <div class="ui link cards">
                       @foreach($blogs as $key => $blog)
-                        <a href="{{ route('blog.show', ['blog' => $blog]) }}" class="card">
-                          <div class="image">
-                            <img src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
-                          </div>
-                          <div class="content">
-                            <div class="header">{!! $blog->user->name or '' !!}</div>
-                            <div class="meta">
-                              <a>{!! $blog->name or '' !!}</a>
+                        <a href="{{ route('blog.show', ['blog' => $blog]) }}">
+                         <div class="card">
+                            <div class="image">
+                              <img src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
                             </div>
-                            <div class="description">
-                              {!! $blog->description or '' !!}
+                            <div class="content">
+                              <div class="header">{!! $blog->user->name or '' !!}</div>
+                              <div class="meta">
+                                <a>{!! $blog->name or '' !!}</a>
+                              </div>
+                              <div class="description">
+                                {!! $blog->description or '' !!}
+                              </div>
                             </div>
                           </div>
                         </a>
