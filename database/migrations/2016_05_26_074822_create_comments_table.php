@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->timestamps();
             $table->unsignedInteger('parent_id')->nullable()->default(null);
-            $table->string('commentable_id');
-            $table->unsignedInteger('commentable_type');
+            $table->unsignedInteger('commentable_id');
+            $table->string('commentable_type');
             $table->boolean('is_internal')->default(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

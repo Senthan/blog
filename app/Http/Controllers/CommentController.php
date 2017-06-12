@@ -33,7 +33,6 @@ class CommentController extends Controller
             return response()->json(['return' => true]);
         }
 
-        alert()->success('Success', 'Your comment successfully added');
         return redirect()->back();
     }
 
