@@ -26,4 +26,10 @@ class HomeController extends Controller
         $blogs = Blog::get();
         return view('home', compact('blogs'));
     }
+
+    public function demo()
+    {
+        return view('demo');
+    }
+
 }
