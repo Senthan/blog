@@ -60,3 +60,4 @@ $router->group(['middleware' => ['auth']], function ($router) {
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/demo', 'HomeController@demo');

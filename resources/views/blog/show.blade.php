@@ -21,6 +21,14 @@
                 </div>
             </div>
         </section>
+
+
+         @include('comment.view', ['model' => get_class($blog), 'currentModel' => $blog])
+
+
     </div>
 </div>
+@endsection
+@section('script')
+    @include('comment.script', ['modelId' => $blog->id])
 @endsection
