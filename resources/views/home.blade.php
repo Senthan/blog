@@ -3,26 +3,6 @@
 @section('content')
 <div class="container">
     <div class="row">
-        
-        <div class="ui pointing menu">
-          <a class="active item">
-            Home
-          </a>
-          <a class="item">
-            Messages
-          </a>
-          <a class="item">
-            Friends
-          </a>
-          <div class="right menu">
-            <div class="item">
-              <div class="ui transparent icon input">
-                <input type="text" placeholder="Search...">
-                <i class="search link icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
         <section class="content">
             <div class="ui segments">
             
@@ -30,46 +10,40 @@
 
                 </div>
                 <div class="ui segment blue">
-                    <div class="ui three stackable cards">
+                    
+                    @foreach($blogs as $key => $blog)
+                      @if($key == 0 || $key %3 == 0)
+                        <div class="ui three stackable cards">
+                      @endif
                       <div class="card">
+                      @foreach($page->getMedia() as $media)
                         <div class="image">
-                          <img src="/images/avatar/large/elliot.jpg">
+                          <img src="{!! asset($media->disk.'/'.$media->id.'/'.$media->file_name) !!}">
                         </div>
-                      </div>
-                      <div class="card">
-                        <div class="image">
-                          <img src="/images/avatar/large/helen.jpg">
+                      @endforeach
+                         <div class="content">
+                          <div class="header">{!! $blog->user->name or '' !!}</div>
+                          <div class="meta">
+                            <a>{!! $blog->name or '' !!}</a>
+                          </div>
+                          <div class="description">
+                            {!! $blog->description or '' !!}
+                          </div>
                         </div>
+
                       </div>
-                      <div class="card">
-                        <div class="image">
-                          <img src="/images/avatar/large/jenny.jpg">
+                      @if($key == 0 || $key %3 == 0)
                         </div>
-                      </div>
-                      <div class="card">
-                        <div class="image">
-                          <img src="/images/avatar/large/veronika.jpg">
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="image">
-                          <img src="/images/avatar/large/stevie.jpg">
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="image">
-                          <img src="/images/avatar/large/steve.jpg">
-                        </div>
-                      </div>
-                    </div>
+                      @endif
+                    @endforeach
                 </div>
                 
                 <div class="ui green segment clearfix">
                     <div class="col-md-6 clearfix">
                         <div class="ui card">
                           <div class="ui slide masked reveal image">
-                            <img src="/images/avatar/large/jenny.jpg" class="visible content">
-                            <img src="/images/avatar/large/elliot.jpg" class="hidden content">
+                            <img src="http://4.bp.blogspot.com/-ryRH20iz2v0/VZFHplQaqJI/AAAAAAAAKu0/dQb85VCObms/w728/slider_05.jpg" class="visible content">
+                            <img src="http://3.bp.blogspot.com/-QJ-eHpxCO5E/VZDN37k1sYI/AAAAAAAAKqs/ldaMKhg9mY8/s450/fasion_summer-trend_235K.jpg" class="hidden content">
                           </div>
                           <div class="content">
                             <a class="header">Team Fu &amp; Hess</a>
@@ -89,21 +63,21 @@
                     <div class="col-md-6 clearfix">
                         <div class="ui relaxed list clearfix">
                           <div class="item">
-                            <img class="ui avatar image" src="/images/avatar/small/daniel.jpg">
+                            <img class="ui avatar image" src="http://1.bp.blogspot.com/-UHsmszF_7IM/VLuu0KDOQnI/AAAAAAAAJLs/5jiUmUsqFo8/s1600/photography_i-see-a-pink-sky_084K.jpg">
                             <div class="content">
                               <a class="header">Daniel Louise</a>
                               <div class="description">Last seen watching <a><b>Arrested Development</b></a> just now.</div>
                             </div>
                           </div>
                           <div class="item">
-                            <img class="ui avatar image" src="/images/avatar/small/stevie.jpg">
+                            <img class="ui avatar image" src="http://3.bp.blogspot.com/-teOCEZ9lnbc/VZDygUj6fmI/AAAAAAAAKrg/EdgzRANztyc/s1600/fasion_backstage-avantgarde_125K.jpg">
                             <div class="content">
                               <a class="header">Stevie Feliciano</a>
                               <div class="description">Last seen watching <a><b>Bob's Burgers</b></a> 10 hours ago.</div>
                             </div>
                           </div>
                           <div class="item">
-                            <img class="ui avatar image" src="/images/avatar/small/elliot.jpg">
+                            <img class="ui avatar image" src="http://4.bp.blogspot.com/-tBFyDVB5ugs/VZFHkkqla6I/AAAAAAAAKus/6RBJq1eZ33o/w291/slider_04.jpg">
                             <div class="content">
                               <a class="header">Elliot Fu</a>
                               <div class="description">Last seen watching <a><b>The Godfather Part 2</b></a> yesterday.</div>
@@ -116,20 +90,20 @@
                     
                 <div class="ui segment blue">
                     <div class="demo">
-                        <div class="item">            
+                        <div class="item" style="text-align: -moz-center !important;text-align: center;">            
                             <div class="clearfix" style="max-width:474px;">
                                 <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                    <li data-thumb="img/thumb/cS-1.jpg"> 
-                                        <img src="img/cS-1.jpg" />
+                                    <li data-thumb="http://3.bp.blogspot.com/-OfTnEDq22WM/VZDuM5yGGZI/AAAAAAAAKrE/2bgsYN5u9Gk/s450/fasion_hijab-collection_75K.jpg"> 
+                                        <img style="width: 100%" src="http://3.bp.blogspot.com/-OfTnEDq22WM/VZDuM5yGGZI/AAAAAAAAKrE/2bgsYN5u9Gk/s450/fasion_hijab-collection_75K.jpg" />
                                          </li>
-                                    <li data-thumb="img/thumb/cS-2.jpg"> 
-                                        <img src="img/cS-2.jpg" />
+                                    <li data-thumb="http://4.bp.blogspot.com/-zRCFgtqAMII/VZDwf46SslI/AAAAAAAAKrQ/_-zS6cXR09U/s450/fasion_creature-concept_229K.jpg"> 
+                                        <img style="width: 100%" src="http://4.bp.blogspot.com/-zRCFgtqAMII/VZDwf46SslI/AAAAAAAAKrQ/_-zS6cXR09U/s450/fasion_creature-concept_229K.jpg" />
                                          </li>
-                                    <li data-thumb="img/thumb/cS-3.jpg"> 
-                                        <img src="img/cS-3.jpg" />
+                                    <li data-thumb="http://4.bp.blogspot.com/-G8KpjvsQrUI/VZDtBxP9xxI/AAAAAAAAKq8/Fbfs8Kxrw_M/s450/fasion_autumn-fire_101K.jpg"> 
+                                        <img style="width: 100%" src="http://4.bp.blogspot.com/-G8KpjvsQrUI/VZDtBxP9xxI/AAAAAAAAKq8/Fbfs8Kxrw_M/s450/fasion_autumn-fire_101K.jpg" />
                                          </li>
-                                    <li data-thumb="img/thumb/cS-4.jpg"> 
-                                        <img src="img/cS-4.jpg" />
+                                    <li data-thumb="http://3.bp.blogspot.com/-teOCEZ9lnbc/VZDygUj6fmI/AAAAAAAAKrg/EdgzRANztyc/s450/fasion_backstage-avantgarde_125K.jpg"> 
+                                        <img style="width: 100%" src="http://3.bp.blogspot.com/-teOCEZ9lnbc/VZDygUj6fmI/AAAAAAAAKrg/EdgzRANztyc/s450/fasion_backstage-avantgarde_125K.jpg" />
                                          </li>
                                 </ul>
                             </div>
@@ -153,4 +127,24 @@
 
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+
+    $(document).ready(function ($) {
+        $('#image-gallery').lightSlider({
+            gallery:true,
+            item:1,
+            thumbItem:9,
+            slideMargin: 0,
+            speed:500,
+            auto:true,
+            loop:true,
+            onSliderLoad: function() {
+                $('#image-gallery').removeClass('cS-hidden');
+            }  
+        });
+    });
+
+</script>
 @endsection

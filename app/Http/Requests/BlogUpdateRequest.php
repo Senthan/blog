@@ -13,7 +13,10 @@ class BlogUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if($this->route()->parameters()['blog'] && $this->route()->parameters()['blog']->user && $this->route()->parameters()['blog']->user->id == auth()->id()) {
+            return true;
+        }
+        return false;
     }
 
     /**
