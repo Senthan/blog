@@ -22,6 +22,7 @@ class BlogController extends Controller
  
     public function index()
     {
+        $this->authorize(new Blog());
         $blogs = Blog::with('category')->get()->values();
         if (request()->ajax()) {
             return $this->response->json($blogs);
@@ -33,6 +34,7 @@ class BlogController extends Controller
  
     public function create()
     {
+        $this->authorize(new Blog());
         $categories = BlogCategory::all();
         return view('blog.create', compact('categories'));  
     }
@@ -40,10 +42,10 @@ class BlogController extends Controller
 
     public function store(BlogStoreRequest $request)
     {
-        
+        $this->authorize(new Blog());
         $pageItem = Blog::create($request->only(['name', 'description', 'blog_category_id'])); 
-
-
+        $pageItem->user_id = auth()->id();
+        $pageItem->save();
         $file = $request->file('chooseFile');
         $fileType = $file->getMimeType();
         $destinationPath = base_path('public');
@@ -70,12 +72,14 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
+        $this->authorize($blog);
         return view('blog.show', compact('blog'));
     }
 
    
     public function edit(Blog $blog)
     {
+        $this->authorize($blog);
         $categories = BlogCategory::all();
         return view('blog.edit', compact('blog', 'categories'));
     }
@@ -83,18 +87,21 @@ class BlogController extends Controller
     
     public function update(BlogUpdateRequest $request, Blog $blog)
     {
+        $this->authorize($blog);
         $blog->update($request->only(['name', 'description', 'blog_category_id']));    
         return redirect()->route('blog.index');
     }
 
     public function destroy(Blog $blog)
     {
+        $this->authorize($blog);
         $blog->delete();
         return redirect()->route('blog.index');
     }
 
     public function delete(Blog $blog)
     {
+        $this->authorize($blog);
         return view('blog.delete', compact('blog'));
     }
 }

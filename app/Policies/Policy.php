@@ -83,9 +83,10 @@ class Policy
 
     public function deleteOwnObject(User $user, $model)
     {
-        if(!isset($model) || (isset($model) && !isset($model->id))) {
-            return false;
+        if(isset($model) && $model->user && $model->user->id == $user->id) {
+            return true
         }
+
         return false;
     }
 }

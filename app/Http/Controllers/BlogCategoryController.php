@@ -13,11 +13,13 @@ class BlogCategoryController extends Controller
  
     public function create()
     {
+    	$this->authorize(new BlogCategory());
         return view('category.create');  
     }
 
     public function store(BlogCategoryStoreRequest $request)
     {
+    	$this->authorize(new BlogCategory());
         BlogCategory::create($request->only(['name', 'description'])); 
         return redirect()->route('blog.create');
     }

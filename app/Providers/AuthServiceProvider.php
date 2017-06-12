@@ -8,6 +8,10 @@ use App\Role;
 use App\Policies\RolePolicy;
 use App\User;
 use App\Policies\UserPolicy;
+use App\Blog;
+use App\Policies\BlogPolicy;
+use App\BlogCategory;
+use App\Policies\BlogCategoryPolicy;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -20,6 +24,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Role::class => RolePolicy::class,
         User::class => UserPolicy::class,
+        Blog::class => BlogPolicy::class,
+        BlogCategory::class => BlogCategoryPolicy::class,
     ];
 
     /**

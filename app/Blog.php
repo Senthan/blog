@@ -35,4 +35,8 @@ class Blog extends Model implements HasMedia
         return $this->belongsTo(BlogCategory::class, 'blog_category_id');
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
 }
