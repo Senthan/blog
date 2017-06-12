@@ -18,6 +18,7 @@ $router->group(['middleware' => ['auth']], function ($router) {
 
     // users 
     $router->get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
+    $router->get('user/create', ['as' => 'user.create', 'uses' => 'UserController@create']);
     $router->post('user', ['as' => 'user.store', 'uses' => 'UserController@store']);
 
     $router->get('user/{user}/edit', ['as' => 'user.edit', 'uses' => 'UserController@edit']);

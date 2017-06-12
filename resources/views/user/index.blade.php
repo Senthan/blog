@@ -6,7 +6,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             @can('create', new \App\User())
-            <a href="#" class="move-top ui small green labeled icon button"><i class="plus icon"></i>Create</a>
+            <a href="{{ route('user.create') }}" class="move-top ui small green labeled icon button"><i class="plus icon"></i>Create</a>
             @endcan
             @can('edit', new \App\User())
             <a data-ng-show="selected && selected.read_only != 'Yes'" data-ng-href="@{{ edit_url }}" class="ui small blue labeled icon button" data-ng-cloak><i class="write icon"></i>Edit</a>
@@ -22,47 +22,6 @@
         </div>
     </div>
 </section>
-
-<div class="modal fade create-user create-user clearfix" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    {!! Form::open(['url' => route('user.store'), 'user' => 'form', 'class' => 'form-horizontal ui form']) !!}
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Create user</h4>
-      </div>
-      <div class="modal-body">
-            @include('user._form')
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-      {!! Form::close() !!}
-    </div>
-  </div>
-</div>
-@if(isset($user))
-<div class="modal fade edit-user clearfix" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    {!! Form::model($user, ['url' => route('user.update', ['user' => $user]), 'user' => 'form', 'class' => 'form-horizontal ui form', 'method' => 'PATCH']) !!}
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit user</h4>
-      </div>
-      <div class="modal-body">
-            @include('user._form')
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Update</button>
-      </div>
-      {!! Form::close() !!}
-    </div>
-  </div>
-</div>
-@endif
 @endsection
 @section('script')
 <script>
@@ -102,20 +61,5 @@
             }
         };
     }]);
-
-
-    $(document).ready(function () {
-        $(".move-top").click(function () {
-            $('.create-user .name').val('');
-           $('.create-user .email').val('');
-           $('.create-user .password').val('');
-           $('.create-user .role-dropdown').val('');
-           $('.create-user .description').val('');
-            $('.modal.create-user').modal('show');
-        });
-
-        const roleDropdown  = $('.role-dropdown');
-        roleDropdown.dropdown({forceSelection: false});
-    });
 </script>
 @endsection
